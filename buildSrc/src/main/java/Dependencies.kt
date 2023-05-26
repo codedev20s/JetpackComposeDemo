@@ -44,7 +44,8 @@ object Version {
 
     // JetPack---------------------------------------------------------------
     const val Lifecycle = "2.4.1"
-    const val Hilt = "2.38.1"
+    const val Hilt = "2.45"
+    const val ComposeNavigation = "2.5.3"
     const val DataStore = "1.0.0"
     const val jetpackCompose = "1.7.1"
     const val jetpackCompseBom = "2023.05.01"
@@ -95,6 +96,7 @@ object Android {
 
 object JetPack {
     const val ViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.Lifecycle}"
+    const val ViewModelComposeUtility = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.Lifecycle}"
     const val ViewModelSavedState =
         "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Version.Lifecycle}"
     const val LiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.Lifecycle}"
@@ -102,7 +104,14 @@ object JetPack {
     const val LifecycleCompilerAPT =
         "androidx.lifecycle:lifecycle-compiler:${Version.Lifecycle}"
     const val HiltCore = "com.google.dagger:hilt-android:${Version.Hilt}"
-    const val HiltApt = "com.google.dagger:hilt-compiler:${Version.Hilt}"
+    const val HiltApt = "com.google.dagger:hilt-android-compiler:${Version.Hilt}"
+    const val HiltCompiler = "com.google.dagger:hilt-compiler:${Version.Hilt}"
+
+    const val HiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
+
+    const val NavigationCompose = "androidx.navigation:navigation-compose:${Version.ComposeNavigation}"
+
+
     const val DtatStore = "androidx.datastore:datastore-preferences:${Version.DataStore}"
 
     val jetpackCompose by lazy { "androidx.activity:activity-compose:${Version.jetpackCompose}" }
