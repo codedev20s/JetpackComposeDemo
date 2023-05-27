@@ -7,7 +7,7 @@ class ApiHelper @Inject constructor(
     private val apiService: ApiService,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) {
-    fun getUsers() = makeCall(dispatcher) { apiservice.getUsers() }
+    fun getUsers() = makeCall(dispatcher) { apiService.getUsers() }
 
     fun getStarWarPeoples() = makeCall(dispatcher) { apiService.getStarWarPeoples() }
 }

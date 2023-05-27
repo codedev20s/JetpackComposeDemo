@@ -1,50 +1,29 @@
 package com.android.jetpackcomposedemo.data.di
 
+import com.android.jetpackcomposedemo.data.api.repo.Constants
 import com.android.jetpackcomposedemo.data.api.repo.KtorConfig
-import com.ascendion.sample.BuildConfig
-
-import com.ascendion.sample.data.api.ApiService
-
-import com.ascendion.sample.data.api.Constants
-
-import com.ascendion.sample.data.api.CoroutinesDispatche
-
-import com.ascendion.sample.data.api.KtorConfig
-
-import com.ascendion.sample.data.api.repo.UserDataSource
 import dagger.Module
-
 import dagger.Provides
-
-import dagger.hilt.Installin
-
+import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-
-import okhttp3
-
-.0kHttpClient
-
-
-import okhttp3.Logging.HttpLogging
-
-Interceptor import retrofit2.Retrofit
-
+import io.ktor.client.features.logging.Logging
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 
 object AppModule {
-    @singleton
+    @Singleton
     @Provides
-    fun provideUserDataSource() UserDataSource()
+    fun provideUserDataSource() = UserDataSource()
 
     @Provides
     fun provideBaseUrl() = Constants.BASE_URL
 
-    @singleton
+    @Singleton
     @Provides
     fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
 
@@ -59,12 +38,10 @@ object AppModule {
         OkHttpClient.Builder().build()
     }
 
-    @singleton
+    @Singleton
     @Provides
-
-    fun provideRetrofit(okHttpClient: OkHttpClient, BASE_URL: String): Retrofit = Retrofit.Builder()
-        .addConverterFactory(
-            GsonConverterFactory.create
+    fun provideRetrofit(okHttpClient: OkHttpClient, BASE_URL: String): Retrofit =
+        Retrofit.Builder().addConverterFactory(GsonConverterFactory.create)
                 .baseUrl(BASE_URL)
                 .client(okttClient)
                 .build()
@@ -72,7 +49,6 @@ object AppModule {
 
             @Provides
             @Singleton
-
             fun provideApiService(retrofit: Retrofit) = retrofit.create(ApiService::class.java)
 
             @Provides

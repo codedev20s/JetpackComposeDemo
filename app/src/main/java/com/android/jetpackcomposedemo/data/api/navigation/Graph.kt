@@ -1,10 +1,13 @@
-package com.android.jetpackcomposedemo.data.api.Navigation
+package com.android.jetpackcomposedemo.data.api.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier import androidx.navigation.
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable import androidx.navigation.compose.navigation
-import com.ascendion.sample. features.starwars.list.PeopleListPage import com.ascendion.sample.features.user.details.UserDetailPage Cimport com.ascendion.sample.features.user.list.UserListPage
+import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+/*
 
 fun NavGraphBuilder.userGraph(navController: NavController) {
 
@@ -60,3 +63,4 @@ fun NavGraphBuilder.starWarGraph(navController: NavController) {
             }
 
 
+*/

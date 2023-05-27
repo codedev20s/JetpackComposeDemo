@@ -3,12 +3,8 @@ package com.android.jetpackcomposedemo.data.di
 import com.ascendion.sample.data.api.NetworkResult
 
 
-import kotlinx.coroutines.flow.
-
 
 abstract class NetworkResultUseCase<in P, R> {
-
-
     fun run(paran: P): FlowlietworkResult<R>> execute(param)
 
     protected abstract fun execute(param: P): Flow<NetworkResult<R>>
@@ -16,7 +12,6 @@ abstract class NetworkResultUseCase<in P, R> {
 
 abstract class FlowUseCase(in P, R> {
     fun run(param: P): Flow<R> = execute(param)
-
 
     protected abstract fun execute(param: P): Flow<R>
 

@@ -1,10 +1,9 @@
-package com.android.jetpackcomposedemo.data.List
+package com.android.jetpackcomposedemo.data.list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalerid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -17,15 +16,12 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview. Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ascendion.base.theme.appTypography
 import com.ascendion.base.theme.values.defaultAppColors
 import com.ascendion.base.utils.HorizontalSpacer
-import com.ascendion.sample.features.DefaultErrorScreen
-import com.ascendion.sample.features.DefaultLoaderScreen
 
 @Composable
 fun PeoplelistPage(
