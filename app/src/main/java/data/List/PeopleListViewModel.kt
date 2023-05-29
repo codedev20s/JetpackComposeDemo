@@ -1,18 +1,8 @@
 package com.android.jetpackcomposedemo.data.List
 import androidx.compose.runtime.State
 
-import androidx.compose.runtime.mutableStateof
-
 import androidx.lifecycle.ViewModel
-
-import androidx.lifecycle.viewModelScope
-
-import com.ascendion.sample.data.api.NetworkResult import com.ascendion.sample.models.PeopleResponse
-
-import com.ascendion.sample.transformers.toPeopleLis import dagger.hilt.android.lifecycle.HiltViewModel
-
-import kotlinx.coroutines.flow.collectLatest import kotlinx.coroutines. Launch
-
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
@@ -57,8 +47,7 @@ class PeopleListViewModel @Inject constructor( private val useCase: PeopleListUs
 }
 
 sealed interface PeopleListPageUiState {
-
-    data class SUCCESS(val List: List<PeopleListCardViewData>) : PeopleListPageUiState
+    data class SUCCESS(val list: List<PeopleListCardViewData>) : PeopleListPageUiState
     object LOADING : PeopleListPageUiState
-    data class FAILURE(val asg: String) : PeoplelistPageUiState
+    data class FAILURE(val msg: String) : PeopleListPageUiState
 }

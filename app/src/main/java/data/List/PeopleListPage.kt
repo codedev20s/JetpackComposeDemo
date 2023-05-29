@@ -4,12 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalerid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3. Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,43 +18,40 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview. Preview
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.ascendion.base.theme.appTypography
-import com.ascendion.base.theme.values.defaultAppColors
-import com.ascendion.base.utils.HorizontalSpacer
-import com.ascendion.sample.features.DefaultErrorScreen
-import com.ascendion.sample.features.DefaultLoaderScreen
+import com.android.jetpackcomposedemo.data.DefaultErrorScreen
+import com.android.jetpackcomposedemo.data.DefaultLoaderScreen
 
 @Composable
 fun PeoplelistPage(
-viewModel: PeopleListViewModel = hiltViewModel(),
-onNavigateToDetail: (url: String) -> Unit
-){
-when (val pageUi = viewModel.pageState.value)
-    PeopleListPageUistate. LOADING-> DefaultLoaderScreen(
-    is PeopleListPageUiState.SUCCESS -> {
-        LazyVerticalGrid(
-            columns GridCells . Fixed (count: 1),
-        contentPadding = PaddingValues(4.dp)
-        ){
-        pageUi.list.forEach { viewData ->
-            item {
-                PeopleListCard(viewData = viewData, onPeopleCardClick = {
-                    onNavigateToDetail(it)
-
-                    })
+    viewModel: PeopleListViewModel = hiltViewModel(),
+    onNavigateToDetail: (url: String) -> Unit
+) {
+    when (val pageUi = viewModel.pageState.value) {
+        PeopleListPageUiState.LOADING -> DefaultLoaderScreen()
+        is PeopleListPageUiState.SUCCESS -> {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(1),
+                contentPadding = PaddingValues(4.dp)
+            ) {
+                pageUi.list.forEach { viewData ->
+                    item {
+                        PeopleListCard(viewData = viewData, onPeopleCardClick = {
+                            onNavigateToDetail(it)
+                        })
+                    }
                 }
             }
         }
-    }
 
-    is PeoplelistPageUiState.FAILURE -> DefaultErrorScreen (msg = pageUi.msg
+        is PeopleListPageUiState.FAILURE -> DefaultErrorScreen(msg = pageUi.msg)
 
     }
 }
-@optIn(ExperimentalMaterial3Api::class)
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PeopleListCard(
     viewData: PeopleListCardViewData,
@@ -102,6 +99,7 @@ fun PeopleListCard(
         }
     }
 }
+
 data class PeopleListCardViewData(
     val url: String,
     val name: String
