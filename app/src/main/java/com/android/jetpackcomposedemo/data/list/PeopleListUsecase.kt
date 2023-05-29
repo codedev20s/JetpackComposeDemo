@@ -1,4 +1,8 @@
+/*
 package com.android.jetpackcomposedemo.data.list
+import com.android.jetpackcomposedemo.data.api.repo.NetworkResult
+import com.android.jetpackcomposedemo.data.api.repo.PeopleResponse
+import com.android.jetpackcomposedemo.data.di.NetworkResultUseCase
 import kotlinx.coroutines.flow.Flow
 
 import javax.inject.Inject
@@ -12,4 +16,4 @@ class PeopleListUseCase @Inject constructor(private val repository: StarWarRepos
         return repository.getStarWarPeoples()
     }
 
-}
+}*/

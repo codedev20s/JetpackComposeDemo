@@ -1,8 +1,15 @@
-package com.android.jetpackcomposedemo.data.List
+/*
+package com.android.jetpackcomposedemo.data.list
 import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.android.jetpackcomposedemo.data.api.repo.NetworkResult
+import com.android.jetpackcomposedemo.data.api.repo.PeopleResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -10,7 +17,7 @@ class PeopleListViewModel @Inject constructor( private val useCase: PeopleListUs
 
 ): ViewModel() {
 
-    private val _pageState = mutableStateof<PeopleListPageUIState>(PeopleListPageUIState.LOADING)
+    private val _pageState = mutableStateOf<PeopleListPageUIState>(PeopleListPageUIState.LOADING)
 
     val pageState: State<PeopleListPageUiState> = _pageState
 
@@ -20,20 +27,15 @@ class PeopleListViewModel @Inject constructor( private val useCase: PeopleListUs
 
 
     private fun loadPage() {
-
-        viesfodelScope.launch {
-
+        viewModelScope.launch {
             useCase.run(Unit).collectLatest {
-
                 renderUI(it)
             }
         }
     }
 
     private fun renderUI(result: NetworkResult<PeopleResponse>) {
-
         _pageState.value = when (result) {
-
             is NetworkResult.FAILURE -> PeopleListPageUiState.FAILURE(result.message)
 
             is NetworkResult.LOADING -> PeopleListPageUiState.LOADING
@@ -50,4 +52,4 @@ sealed interface PeopleListPageUiState {
     data class SUCCESS(val list: List<PeopleListCardViewData>) : PeopleListPageUiState
     object LOADING : PeopleListPageUiState
     data class FAILURE(val msg: String) : PeopleListPageUiState
-}
+}*/

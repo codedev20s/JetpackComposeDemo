@@ -26,7 +26,6 @@ object KtorConfig {
                 isLenient = true
                 ignoreUnknownKeys = true
             })
-
             engine {
                 connectTimeout = TIME_OUT
                 socketTimeout = TIME_OUT
@@ -44,7 +43,6 @@ object KtorConfig {
             onResponse { response ->
                 Log.d("HTTP status:", "msg: ${response.status}")
             }
-
             install(DefaultRequest) {
                 header(HttpHeaders.ContentType, ContentType.Application.Json)
             }
@@ -54,8 +52,7 @@ object KtorConfig {
 
     fun <T> ktorCall(
         dispatcher: CoroutineDispatcher,
-        apicall: suspend () -> T
-    ): Flow<NetworkResult<T>> {
+        apicall: suspend () -> T): Flow<NetworkResult<T>> {
         return flow {
             emit(NetworkResult.LOADING())
             try {

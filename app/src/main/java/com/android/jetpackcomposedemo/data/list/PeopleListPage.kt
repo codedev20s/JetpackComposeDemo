@@ -1,5 +1,5 @@
-package com.android.jetpackcomposedemo.data.List
-
+/*
+package com.android.jetpackcomposedemo.data.list
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -45,9 +45,7 @@ fun PeoplelistPage(
                 }
             }
         }
-
         is PeopleListPageUiState.FAILURE -> DefaultErrorScreen(msg = pageUi.msg)
-
     }
 }
 
@@ -61,41 +59,42 @@ fun PeopleListCard(
     Card(
         onClick = { onPeopleCardClick(viewData.url) },
         colors = CardDefaults.elevatedCardColors(containerColor = colorscheme.surface),
-        elevation CardDefaults . cardElevation (defaultElevation = 2.dp),
-        modifier Modifier . padding (4.dp)
+        elevation= CardDefaults . cardElevation (defaultElevation = 2.dp),
+        modifier =Modifier . padding (4.dp)
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                     . fillMaxWidth ()
                 .padding(8.dp, 12.dp, 8.dp, 12.dp)
 
         ) {
             Box(
-                modifier = Modifier
-                        shadow (2.dp, shape CircleShape
-            )
-                .background(
-                    color colorSchene . primaryContainer, shape CircleShape
-                )
-                .size(40.dp), contentAlignment Alignment.Center
-            ){
-            Text(
-                text = viewData.name.firstOrNull().uppercase() ?: "X"
-                color Color.White,
-                textAlign TextAlign . Center,
-                style appTypography . defaultTypography . displaySmall,
-                fontWeight FontWeight . Bold
-            )
-        }
+                modifier = Modifier.shadow (2.dp, shape= CircleShape)
+                .background(color = ColorSchene.primaryContainer, shape =CircleShape)
+                .size(40.dp), contentAlignment= Alignment.Center)
+            {
 
-            HorizontalSpacer(ap 16.dp)
-            Text = ViewData.nane,
+            Text(
+                text = viewData.name.firstOrNull()?.uppercase() ?: "X",
+                color= Color.White,
+                textAlign =TextAlign.Center,
+                style =appTypography.defaultTypography.displaySmall,
+                fontWeight= FontWeight.Bold)
+            }
+
+        //    HorizontalSpacer(16.dp)
+Text = ViewData.nane,
             maxLines 1,
             style appTypography . defaultTypography . tittelen,
             fontWeight FontWeight . Bold,
-            Overflow Textoverflow . Ellipsis
-            )
+            Overflow Textoverflow . Ellipsis)
+
+            Text(text = "ViewData.nane",
+            maxLines =1,
+            style =appTypography.defaultTypography.tittelen,
+            fontWeight= FontWeight.Bold,
+            Overflow =TextOverflow.Ellipsis)
         }
     }
 }
@@ -112,3 +111,4 @@ fun PeopleListCardPreview() {
         url = "abc", name = "Robert Weirde"
     ), onPeopleCardClick = {})
 }
+*/
