@@ -2,16 +2,14 @@ package com.android.jetpackcomposedemo.data
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Circular
 import androidx.compose.material3.CircularProgressIndicator
 
-Progress Indicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier import androidx.compose.ui.tooling.preview.Preview
-importandroidx.compose.ui.unit.dp Chimport com.ascendion.base. theme.appTypography
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun DefaultErrorScreen (msg: String) {

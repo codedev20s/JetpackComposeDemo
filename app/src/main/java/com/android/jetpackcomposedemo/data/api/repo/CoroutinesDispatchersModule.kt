@@ -2,12 +2,10 @@ package com.android.jetpackcomposedemo.data.api.repo
 
 import dagger.Module
 import dagger.Provides
-import dagger.hilt. Installin
+import dagger.hilt.InstallIn
 import dagger.hilt.components. SingletonComponent
-import kotlinx.coroutines.Coroutine
 import kotlinx.coroutines.CoroutineDispatcher
-
-Dispatcher import kotlinx.coroutines. Dispatchers
+import kotlinx.coroutines. Dispatchers
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -18,8 +16,9 @@ object CoroutinesDispatchersModule {
 
     @IoDispatcher
     @Provides
-    fun providesIoDispatcher(): CoroutineDispatcher = Dispatchers. 10
+    fun providesIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
 
     @MainDispatcher
     @Provides
     fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
+}

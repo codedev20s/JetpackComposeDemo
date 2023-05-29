@@ -110,6 +110,13 @@ dependencies {
     implementation("io.ktor:ktor-client-serialization:1.5.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     implementation("io.ktor:ktor-client-logging-jvm:1.5.0")
+
+    implementation("org.jetbrains.kotlinx: kotlinx-serialization-json:1.0.1")
+
+    implementation("com.squareup.retrofit2: retrofit:2.6.0")
+    implementation("com.squareup.okhttp3: Logging-interceptor:4.5.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.6.0")
+
 }
 
 
