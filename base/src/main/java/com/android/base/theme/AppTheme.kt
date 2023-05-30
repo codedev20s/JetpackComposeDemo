@@ -48,3 +48,22 @@ fun BaseAppTheme(
             content = content)
     }
 }
+
+object BaseTheme{
+
+    val colors:AppColors
+    @Composable
+    get()=LocalAppColors.current
+
+    val typography:AppTypography
+        @Composable
+        get()=LocalTypography.current
+
+    val shapes:AppShapes
+        @Composable
+        get()=LocalAppShapes.current
+
+    val elevations:AppElevations
+        @Composable
+        get()=LocalAppElevations.current
+}
