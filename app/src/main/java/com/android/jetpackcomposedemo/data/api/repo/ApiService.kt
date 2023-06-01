@@ -11,6 +11,8 @@ interface ApiService {
 
     @GET()
     suspend fun getStarWarPeoples(@Url url: String = "https://swapi.dev/api/people"): Response<PeopleResponse>
+
+
 }
 
 

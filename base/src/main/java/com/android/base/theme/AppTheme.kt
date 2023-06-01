@@ -50,8 +50,7 @@ fun BaseAppTheme(
 }
 
 object BaseTheme{
-
-    val colors:AppColors
+    val colors:AppColor
     @Composable
     get()=LocalAppColors.current
 

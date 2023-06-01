@@ -16,36 +16,32 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val useCase: LoginUseCase): ViewModel() {
 
-    private val _pageState = mutableStateOf<PeopleListPageUiState>(PeopleListPageUiState.LOADING)
-    val pageState: State<PeopleListPageUiState> = _pageState
+    private val _pageState = mutableStateOf<LoginPageUiState>(LoginPageUiState.DONothing)
+    val pageState: State<LoginPageUiState> = _pageState
 
      fun callLoginAPI(userName:String,password:String) {
-         val loginRequest= LoginRequest(userName,password)
+        val loginRequest= LoginRequest(userName,password)
         viewModelScope.launch {
             useCase.run(loginRequest).collectLatest {
                 renderUI(it)
             }
-
-
-
         }
     }
 
     private fun renderUI(result: NetworkResult<LoginResonse>) {
         _pageState.value = when (result) {
-            is NetworkResult.FAILURE -> PeopleListPageUiState.FAILURE(result.message)
-
-            is NetworkResult.LOADING -> PeopleListPageUiState.LOADING
-
+            is NetworkResult.FAILURE -> LoginPageUiState.FAILURE(result.message)
+            is NetworkResult.LOADING -> LoginPageUiState.LOADING
             is NetworkResult.SUCCESS -> {
-                PeopleListPageUiState.SUCCESS(result.data)
+                LoginPageUiState.SUCCESS(result.data)
             }
         }
     }
 }
 
-sealed interface PeopleListPageUiState {
-    data class SUCCESS(val userResponse: LoginResonse) : PeopleListPageUiState
-    object LOADING : PeopleListPageUiState
-    data class FAILURE(val msg: String) : PeopleListPageUiState
+sealed interface LoginPageUiState {
+    data class SUCCESS(val userResponse: LoginResonse) : LoginPageUiState
+    object LOADING : LoginPageUiState
+    data class FAILURE(val msg: String) : LoginPageUiState
+    object DONothing:LoginPageUiState
 }

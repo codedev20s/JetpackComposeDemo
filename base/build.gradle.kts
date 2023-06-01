@@ -35,10 +35,14 @@ android {
 
 dependencies {
     implementation(JetPack.jetpackCompose)
+    implementation(JetPack.DtatStore)
     implementation(AndroidX.CoreKtx)
     implementation(JetPack.Lifecycle)
     implementation(JetPack.jetpackComposeBom)
     implementation(JetPack.jetpackCompseMaterial3)
+    implementation(JetPack.jetpackComposeUi)
+    implementation(JetPack.jetpackCompseGraphics)
+    implementation(JetPack.jetpackComposeToolingPreview)
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

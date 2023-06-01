@@ -1,26 +1,18 @@
 package com.android.base.utils
+/*
 
 import androidx.datastore.core.DataStore
-
 import androidx.datastore.preferences.core.*
-
 import com.google.gson.Gson
-
 import kotlinx.coroutines.flow.Flow
-
 import kotlinx.coroutines.flow.map
 import java.util.prefs.Preferences
 
 suspend fun DataStore<Preferences>.set(key: String, value: String?) {
-
     edit {
-
         if (value != null) {
-
             it[stringPreferencesKey(key)] = value
-
         } else {
-
             it.remove(stringPreferencesKey(key))
         }
     }
@@ -39,7 +31,7 @@ suspend fun DataStore<Preferences>.set(key: String, value: Int?) {
 suspend fun DataStore<Preferences>.set(key: String, value: Float?) {
     edit {
         if (value != null) {
-            it[floattPreferencesKey(key)] = value
+            it[floatPreferencesKey(key)] = value
         } else {
             it.remove(floatPreferencesKey(key))
         }
@@ -96,4 +88,4 @@ suspend inline fun <reified T : Any> DataStore<Preferences>.getObject(
             Gson().fromJson(jsonString, T::class.java)
         }
     }
-}
+}*/
