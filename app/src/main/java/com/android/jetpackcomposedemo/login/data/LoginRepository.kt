@@ -13,5 +13,4 @@ class LoginRepositoryImpl @Inject constructor(private val ktorApiHelper: KtorApi
     override fun getLoginDetails(loginRequest:LoginRequest): Flow<NetworkResult<LoginResonse>> {
       return  ktorApiHelper.getLoginUserDetails(loginRequest)
     }
-
 }

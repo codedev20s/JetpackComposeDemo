@@ -11,6 +11,7 @@ sealed class NetworkResult<T> {
     class LOADING<T> : NetworkResult<T>()
 }
 
+
     private suspend fun <T> safeApicall(apicall: suspend () -> Response<T>): NetworkResult<T> {
         try {
             val response = apicall()
@@ -31,7 +32,6 @@ sealed class NetworkResult<T> {
 
     private fun <T> error(errorMessage: String): NetworkResult<T> =
         NetworkResult.FAILURE(errorMessage)
-
     fun <T> makeCall(
         dispatcher: CoroutineDispatcher, apicall: suspend () -> Response<T>
     ): Flow<NetworkResult<T>> {

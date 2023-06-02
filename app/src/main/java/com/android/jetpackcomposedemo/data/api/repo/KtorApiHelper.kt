@@ -12,10 +12,6 @@ class KtorApiHelper @Inject constructor(
     private val userApi: KtorApiService,
     @IoDispatcher private val dispatcher: CoroutineDispatcher) {
 
-    fun getStarWarPeoples(): Flow<NetworkResult<PeopleResponse>> {
-        return ktorCall(dispatcher) { userApi.getStarWarPeoples() }
-    }
-
     fun getLoginUserDetails(loginRequest:LoginRequest) : Flow<NetworkResult<LoginResonse>>{
         return ktorCall(dispatcher) { userApi.getLoginResponse(loginRequest)}
     }

@@ -1,7 +1,7 @@
 package com.android.jetpackcomposedemo.data.api.navigation
 
 object Routes {
-const val user ="user_route"
+const val userRoute ="user_route"
 const val userListRoute = "user_list_route"
 const val userDetailRoute = "user_detail_route/"
 const val userDetailRouteWithArg="user_detail_route/{${RouteArgs.userId}}"
