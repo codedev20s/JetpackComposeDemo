@@ -50,7 +50,6 @@ private fun CreateImageProfile(modifier: Modifier = Modifier) {
     }
 }
 
-
 @Composable
 fun CreateProfileCard() {
     val buttonClickedState = remember {

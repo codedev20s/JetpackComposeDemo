@@ -2,6 +2,10 @@ package com.android.jetpackcomposedemo.login.presentation
 
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,24 +35,20 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
 import com.android.jetpackcomposedemo.data.DefaultErrorScreen
 import com.android.jetpackcomposedemo.data.DefaultLoaderScreen
+import com.android.jetpackcomposedemo.data.api.navigation.Routes
+import com.android.jetpackcomposedemo.login.data.LoginResonse
 import com.android.jetpackcomposedemo.ui.theme.JetpackComposeDemoTheme
 
-@Composable
-fun GreetingPreview() {
-    JetpackComposeDemoTheme {
-        /*  CreateUI(hiltViewModel()) {
-          }*/
-    }
-}
 
-
-@OptIn(ExperimentalMaterial3Api::class)
+ 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun CreateUI(
-    loginViewModel: LoginViewModel = hiltViewModel(),
-    onNavigationLoginSuccess: (url: String) -> Unit) {
+    loginViewModel: LoginViewModel ,
+    onNavigationLoginSuccess: (data: LoginResonse) -> Unit) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val errorMessage = "Text input too long"
@@ -56,7 +56,7 @@ fun CreateUI(
 
     val charLimit = 4
 
-    //val localKeyboard = LocalSoftwareKeyboardController.current
+     val localKeyboard = LocalSoftwareKeyboardController.current
 
     //  var textFieldValueState by remember{ mutableStateOf() }
 
@@ -87,16 +87,26 @@ fun CreateUI(
             )
         }
 
+        val interactionSource = remember { MutableInteractionSource() }
+        val isPressed by interactionSource.collectIsPressedAsState()
+
+
+
         Button(
             onClick = {
-                //localKeyboard?.hide()
+                localKeyboard?.hide()
                 loginViewModel.callLoginAPI(username, password)
             },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(16.dp),
-            enabled = (username.isNotEmpty()) && (password.isNotEmpty())) {
-            Text(text = "Login")
+            enabled = (username.isNotEmpty()) && (password.isNotEmpty()),
+            interactionSource = interactionSource) {
+
+            Row {
+                Text(if (isPressed) "Login Pressed!" else " Login Not pressed")
+            }
+          //  Text(text = "Login")
         }
     }
 
@@ -109,7 +119,7 @@ fun CreateUI(
                 pageUi.userResponse.firstName,
                 Toast.LENGTH_LONG
             ).show()
-            onNavigationLoginSuccess("profileScreen")
+            onNavigationLoginSuccess(pageUi.userResponse)
         }
         is LoginPageUiState.FAILURE -> DefaultErrorScreen(msg = pageUi.msg)
         is LoginPageUiState.DONothing -> {}

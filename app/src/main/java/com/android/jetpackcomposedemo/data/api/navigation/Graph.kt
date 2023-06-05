@@ -10,19 +10,23 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.navigation
+import com.android.jetpackcomposedemo.login.data.LoginResonse
 import com.android.jetpackcomposedemo.login.presentation.CreateUI
+import com.android.jetpackcomposedemo.login.presentation.LoginViewModel
+import com.android.jetpackcomposedemo.profile.CreateProfileCard
 
-fun NavGraphBuilder.userGraph(navController: NavController) {
+fun NavGraphBuilder.userGraph(navController: NavController, loginViewModel: LoginViewModel) {
     navigation(startDestination = Routes.userListRoute, route = Routes.userRoute) {
-        composable(route=Routes.userListRoute, arguments = listOf()) {
-            CreateUI(){
+        composable(route = Routes.userListRoute, arguments = listOf()) {
+            CreateUI(loginViewModel = loginViewModel) {
+                navController.navigate(Routes.profileScreenWithArg + it.firstName)
             }
         }
-        composable(route = Routes.userDetailRouteWithArg,
-            arguments = listOf(navArgument("userid") {
-                type = NavType.LongType
-            })) {
-       // UserDetailPage()
+        composable(
+            route = Routes.profileScreenWithArg,
+            arguments = listOf(navArgument("firstName") { type = NavType.StringType })
+        ) {
+            CreateProfileCard()
         }
     }
 }
@@ -30,13 +34,16 @@ fun NavGraphBuilder.userGraph(navController: NavController) {
 @Composable
 fun UserNavHost(
     navController: NavHostController,
-    modifier: Modifier = Modifier) {
+    modifier: Modifier = Modifier,
+    loginViewModel: LoginViewModel
+) {
     NavHost(
         navController = navController,
         startDestination = Routes.userRoute,
-        modifier = modifier)
+        modifier = modifier
+    )
     {
-        userGraph(navController)
+        userGraph(navController, loginViewModel)
     }
 }
 
